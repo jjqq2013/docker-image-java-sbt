@@ -3,10 +3,10 @@
 # We should use Debian stretch or Ubuntu bionic as base image.
 FROM openjdk:8-jdk
 
-# Optional: install some daily utilities
+# Optional: install some daily utilities. It is very inconvenient if no any editor pre-installed.
 RUN set -x && \
   apt-get -y update && \
-  apt-get -y install vim
+  apt-get -y install vim less
 
 RUN set -x && \
   curl -fsSL -o sbt.deb https://dl.bintray.com/sbt/debian/sbt-0.13.15.deb && \
@@ -17,7 +17,7 @@ RUN set -x && \
   rm sbt.deb && \
   sbt sbtVersion
 
-# set LANG=*.UTF-8 so that default file encoding will be UTF-8, otherwise any non-ASCII files may have trouble.
+# set LANG=*.UTF-8 so that default file encoding will be UTF-8 and you can input non-ASCII chars in bash etc.
 ENV LANG=C.UTF-8
 
 # just for debug
