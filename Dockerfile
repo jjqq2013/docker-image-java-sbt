@@ -3,11 +3,6 @@
 # We should use Debian stretch or Ubuntu bionic as base image.
 FROM openjdk:8-jdk
 
-# Optional: install some daily utilities. It is very inconvenient if no any editor pre-installed.
-RUN set -x && \
-  apt-get -y update && \
-  apt-get -y install vim less
-
 RUN set -x && \
   curl -fsSL -o sbt.deb https://dl.bintray.com/sbt/debian/sbt-0.13.15.deb && \
   # Use --ignore-depends=openjdk-8-jdk to avoid installation failure due to openjdk-8-jdk has been removed from its repo
